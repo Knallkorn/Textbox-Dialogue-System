@@ -16,5 +16,6 @@ pagechar = 0;
 #region User Variables
 
 nextkey = vk_space;
+textspeed = 0.5;
 
 #endregion
