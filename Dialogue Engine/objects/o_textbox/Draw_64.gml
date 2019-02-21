@@ -13,10 +13,6 @@ else
 	pagefinal = text;
 }
 
-pagechar = string_length(pagefinal);
-
-var textfinal = string_copy(pagefinal, 1, charcount);
-
 #region Draw Box
 
 // Left side
@@ -34,10 +30,10 @@ draw_sprite_ext(midsprite, 0, 0 + xoffset + (sprite_get_width(sidesprite)), camh
 #region Text
 
 var textx = 0 + xoffset + sprite_get_width(sidesprite);
-var texty = camheight - yoffset - ((sprite_get_height(sidesprite) / 10) * 8);
+var texty = camheight - yoffset - ((sprite_get_height(sidesprite) / 10) * 9);
 
 draw_set_color(c_white)
 draw_set_font(f_test)
-draw_text_ext(textx, texty, textfinal, 10, midwidth);
+draw_text_ext(textx, texty, pagefinal, 10, midwidth);
 
 #endregion
