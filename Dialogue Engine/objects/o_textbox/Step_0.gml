@@ -1,4 +1,25 @@
-if keyboard_check_pressed(nextkey) && currentpage < (pages - 1)
+if charcount < pagechar
 {
-	currentpage += 1;
+	if keyboard_check_pressed(nextkey)
+	{
+		charcount = pagechar;
+		exit
+	}
+	else
+	{
+		charcount += textspeed;
+	}
+}
+
+if keyboard_check_pressed(nextkey) && charcount = pagechar
+{
+	if currentpage < pages - 1
+	{
+		currentpage += 1;
+		charcount = 0;
+	}
+	else
+	{
+		instance_destroy();
+	}
 }
