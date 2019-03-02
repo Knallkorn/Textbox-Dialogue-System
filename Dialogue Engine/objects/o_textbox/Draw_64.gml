@@ -31,13 +31,19 @@ draw_sprite_ext(midsprite, 0, 0 + xoffset + (sprite_get_width(sidesprite)), camh
 
 #endregion
 
+#region Draw Avatar
+
+draw_sprite(avatar,0,)
+
+#endregion
+
 #region Text
 
-var textx = 0 + xoffset + sprite_get_width(sidesprite);
-var texty = camheight - yoffset - ((sprite_get_height(sidesprite) / 10) * 8);
+var textx = 0 + xoffset + sprite_get_width(sidesprite) + textxoffset;
+var texty = camheight - yoffset - sprite_get_height(sidesprite) + textyoffset;
 
-draw_set_color(c_white)
-draw_set_font(f_test)
+draw_set_color(c_white);
+draw_set_font(font);
 draw_text_ext(textx, texty, textfinal, 10, midwidth);
 
 #endregion

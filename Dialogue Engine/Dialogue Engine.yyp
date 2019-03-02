@@ -183,6 +183,14 @@
             }
         },
         {
+            "Key": "4d45e5fa-c4aa-46d3-8379-192cd8109918",
+            "Value": {
+                "id": "82f052ae-081e-46e4-bdfe-fd90e7a7931c",
+                "resourcePath": "sprites\\s_testavatar\\s_testavatar.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "50b8dd3b-b73b-4e18-b1bd-73d9d1428048",
             "Value": {
                 "id": "00c9aef9-679b-45b6-86e6-0f02ffbe140e",
