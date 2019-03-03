@@ -19,7 +19,7 @@ sidesprite = s_textboxside;
 midsprite = s_textboxmid;
 xoffset = 5;
 yoffset = 10;
-textxoffset = 1;
+textxoffset = 3;
 textyoffset = 10;
 
 #endregion
