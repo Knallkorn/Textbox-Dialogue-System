@@ -255,6 +255,14 @@
             }
         },
         {
+            "Key": "71b8a324-dd70-4104-9989-9a4953f55adf",
+            "Value": {
+                "id": "84a26f72-9b05-49f1-8836-141dd6ad0018",
+                "resourcePath": "sprites\\s_testavatar_owo\\s_testavatar_owo.yy",
+                "resourceType": "GMSprite"
+            }
+        },
+        {
             "Key": "737014f7-fe43-4787-af15-308aabd39b98",
             "Value": {
                 "id": "a1bde141-cd54-4203-af0d-cd5388f42bd1",

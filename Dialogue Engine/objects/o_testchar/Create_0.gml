@@ -1,2 +1,7 @@
-text[0] = "Yo this is the cool dude page u kno wat im saying dog reeeeeeeee erer er er erer er er er e re dawdawdawdaw rer er e rer";
-text[1] = "yo wats crakin my g the secnd page worked u muddatruckn sunuva biscuit";
+text[0] = "the fitness gram pacer test is a multi level arobic capacity test. it is my personakl beilieff that traps are gay for these four uhh five maybe ughdaw reasons;"
+textava[0] = s_testavatar;
+text[1] = "bottom text"
+textava[1] = s_testavatar_owo;
+text[2] = "other bottom text"
+textava[2] = s_testavatar;
+

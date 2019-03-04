@@ -21,5 +21,6 @@ xoffset = 5;
 yoffset = 10;
 textxoffset = 3;
 textyoffset = 10;
+textspace = 15;
 
 #endregion
