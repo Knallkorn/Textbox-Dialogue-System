@@ -64,6 +64,13 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 		yy += textspace;
 		xx = textx;
 	}
+	
+	var charstoend = string_length(pagefinal) - currentchar,nxtspc = string_pos(" ", string_copy(pagefinal,currentchar + 1,charstoend));
+	if (xx + string_width(string_copy(pagefinal,currentchar,nxtspc))) > lineend
+	{
+		yy += textspace;
+		xx = textx;
+	}
 }
 
 #endregion
