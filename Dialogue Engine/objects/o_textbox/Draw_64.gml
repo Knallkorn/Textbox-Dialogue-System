@@ -50,7 +50,7 @@ draw_set_font(font);
 col = defaultcol;
 
 var xx = textx, yy = texty, letter = "", lineend = textend + textx, nextletter, lastletter, letx = xx, lety = yy;
-var shake = false;
+var wave = false, shake = false;
 
 for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 {
@@ -67,6 +67,7 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 				col = defaultcol;
 				letx = xx;
 				lety = yy;
+				wave = false;
 				shake = false;
 			} break;
 			case "a": col = c_aqua; break;
@@ -79,7 +80,8 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 			case "p": col = c_purple; break;
 			case "b": col = c_black; break;
 			case "w": col = c_white; break;
-			case "^": shake = true; break;
+			case "^": wave = true; break;
+			case "!": shake = true; break;
 		}
 		letter = "";
 	}
@@ -116,9 +118,15 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 	letx = xx;
 	lety = yy;
 	
-	if shake = true
+	if wave = true
 	{
 		lety += (sin((waveang - (currentchar * 30)) * pi/180) * wavestrength);
+	}
+	
+	if shake = true
+	{
+		lety += random_range(-shakestrength, shakestrength);
+		letx += random_range(-shakestrength, shakestrength);
 	}
 	}
 }

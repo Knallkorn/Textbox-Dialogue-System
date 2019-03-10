@@ -29,6 +29,7 @@ textyoffset = 10;
 
 defaultcol = c_white;
 wavestrength = 2;
+shakestrength = 0.5;
 
 textspace = 15;
 
