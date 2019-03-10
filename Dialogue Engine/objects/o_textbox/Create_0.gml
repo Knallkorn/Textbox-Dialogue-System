@@ -7,7 +7,6 @@ currentpage = 0;
 charcount = 0;
 pagechar = 0;
 avatar = 0;
-colour = undefined;
 
 #endregion
 
@@ -30,5 +29,11 @@ textyoffset = 10;
 defaultcol = c_white;
 
 textspace = 15;
+
+#endregion
+
+#region //Default Variables II
+
+col = defaultcol;
 
 #endregion

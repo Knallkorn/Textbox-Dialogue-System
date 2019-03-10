@@ -47,14 +47,26 @@ var texty = camheight - yoffset - sprite_get_height(sidesprite) + textyoffset;
 var textend = midwidth - xoffset - sprite_get_width(sidesprite) - textxoffset - sprite_get_width(avatarfinal);
 
 draw_set_font(font);
+col = defaultcol;
 
-colour = defaultcol;
 var xx = textx, yy = texty, letter = "", lineend = textend + textx;
 
 for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 {
 	letter = string_copy(pagefinal,currentchar,1);
-	draw_text_colour(xx,yy,letter,colour,colour,colour,colour,1);
+	
+	if letter = "`" || letter = "*"
+	{
+		switch (letter)
+		{
+			case "*": col = defaultcol; break;
+			case "`": col = c_teal; break;
+		}
+	}
+	else
+	{
+		draw_text_colour(xx,yy,letter,col,col,col,col,1);
+		
 	if xx < lineend
 	{
 		xx += string_width(letter);
@@ -66,10 +78,12 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 	}
 	
 	var charstoend = string_length(pagefinal) - currentchar,nxtspc = string_pos(" ", string_copy(pagefinal,currentchar + 1,charstoend));
+	
 	if (xx + string_width(string_copy(pagefinal,currentchar,nxtspc))) > lineend
 	{
 		yy += textspace;
 		xx = textx;
+	}
 	}
 }
 
