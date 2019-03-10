@@ -23,3 +23,5 @@ if keyboard_check_pressed(nextkey) && charcount = pagechar
 		instance_destroy();
 	}
 }
+
+waveang += 2;

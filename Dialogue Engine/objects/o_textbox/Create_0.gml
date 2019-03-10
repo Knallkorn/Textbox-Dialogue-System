@@ -7,6 +7,7 @@ currentpage = 0;
 charcount = 0;
 pagechar = 0;
 avatar = 0;
+waveang = 0;
 
 #endregion
 
@@ -27,6 +28,7 @@ textxoffset = 3;
 textyoffset = 10;
 
 defaultcol = c_white;
+wavestrength = 2;
 
 textspace = 15;
 

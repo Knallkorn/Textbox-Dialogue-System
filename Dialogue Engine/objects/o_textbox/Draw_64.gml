@@ -49,7 +49,8 @@ var textend = midwidth - xoffset - sprite_get_width(sidesprite) - textxoffset - 
 draw_set_font(font);
 col = defaultcol;
 
-var xx = textx, yy = texty, letter = "", lineend = textend + textx, nextletter, lastletter;
+var xx = textx, yy = texty, letter = "", lineend = textend + textx, nextletter, lastletter, letx = xx, lety = yy;
+var shake = false;
 
 for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 {
@@ -61,21 +62,34 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 	{
 		switch (nextletter)
 		{
-			case "*": col = defaultcol; break;
+			case "*": 
+			{
+				col = defaultcol;
+				letx = xx;
+				lety = yy;
+				shake = false;
+			} break;
 			case "a": col = c_aqua; break;
 			case "r": col = c_red; break;
 			case "f": col = c_fuchsia; break;
 			case "o": col = c_orange; break;
+			case "y": col = c_yellow; break;
+			case "g": col = c_gray; break;
+			case "l": col = c_lime; break;
+			case "p": col = c_purple; break;
+			case "b": col = c_black; break;
+			case "w": col = c_white; break;
+			case "^": shake = true; break;
 		}
 		letter = "";
 	}
 	else
 	{
-	if lastletter = "`"
+		if lastletter = "`"
 	{
 		letter = "";	
 	}
-	draw_text_colour(xx,yy,letter,col,col,col,col,1);
+	draw_text_colour(letx,lety,letter,col,col,col,col,1);
 	
 	if xx < lineend
 	{
@@ -89,10 +103,22 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 	
 	var charstoend = string_length(pagefinal) - currentchar,nxtspc = string_pos(" ", string_copy(pagefinal,currentchar + 1,charstoend));
 	
+	//Check if word too long
+	
 	if (xx + string_width(string_copy(pagefinal,currentchar,nxtspc))) > lineend
 	{
 		yy += textspace;
 		xx = textx;
+	}
+	
+	//Text movement effects
+	
+	letx = xx;
+	lety = yy;
+	
+	if shake = true
+	{
+		lety += (sin((waveang - (currentchar * 30)) * pi/180) * wavestrength);
 	}
 	}
 }
