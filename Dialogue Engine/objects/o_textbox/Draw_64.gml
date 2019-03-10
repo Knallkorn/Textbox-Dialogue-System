@@ -49,24 +49,34 @@ var textend = midwidth - xoffset - sprite_get_width(sidesprite) - textxoffset - 
 draw_set_font(font);
 col = defaultcol;
 
-var xx = textx, yy = texty, letter = "", lineend = textend + textx;
+var xx = textx, yy = texty, letter = "", lineend = textend + textx, nextletter, lastletter;
 
 for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 {
 	letter = string_copy(pagefinal,currentchar,1);
+	nextletter = string_copy(pagefinal,currentchar + 1,1);
+	lastletter = string_copy(pagefinal,currentchar - 1,1);
 	
-	if letter = "`" || letter = "*"
+	if letter = "`"
 	{
-		switch (letter)
+		switch (nextletter)
 		{
 			case "*": col = defaultcol; break;
-			case "`": col = c_teal; break;
+			case "a": col = c_aqua; break;
+			case "r": col = c_red; break;
+			case "f": col = c_fuchsia; break;
+			case "o": col = c_orange; break;
 		}
+		letter = "";
 	}
 	else
 	{
-		draw_text_colour(xx,yy,letter,col,col,col,col,1);
-		
+	if lastletter = "`"
+	{
+		letter = "";	
+	}
+	draw_text_colour(xx,yy,letter,col,col,col,col,1);
+	
 	if xx < lineend
 	{
 		xx += string_width(letter);
