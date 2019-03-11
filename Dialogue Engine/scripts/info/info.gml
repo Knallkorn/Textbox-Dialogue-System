@@ -19,6 +19,9 @@
 // c_white = w
 // c_gray = g
 
+// rainbow = @
+
 ///Other
 // Wave = ^
 // Shake = !
+// Pulse = #

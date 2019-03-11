@@ -25,3 +25,14 @@ if keyboard_check_pressed(nextkey) && charcount = pagechar
 }
 
 waveang += 2;
+
+alpha = txtbox_wave(0, 0.75, 1, 0);
+
+if r_hue != 360
+{
+	r_hue += 3;
+}
+else
+{
+	r_hue = 0;
+}

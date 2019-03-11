@@ -49,8 +49,8 @@ var textend = midwidth - xoffset - sprite_get_width(sidesprite) - textxoffset - 
 draw_set_font(font);
 col = defaultcol;
 
-var xx = textx, yy = texty, letter = "", lineend = textend + textx, nextletter, lastletter, letx = xx, lety = yy;
-var wave = false, shake = false;
+var xx = textx, yy = texty, letter = "", lineend = textend + textx, nextletter, lastletter, letx = xx, lety = yy, a = 1;
+var wave = false, shake = false, pulse = false, rainbow = false;
 
 for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 {
@@ -69,6 +69,8 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 				lety = yy;
 				wave = false;
 				shake = false;
+				pulse = false;
+				rainbow = false;
 			} break;
 			case "a": col = c_aqua; break;
 			case "r": col = c_red; break;
@@ -82,6 +84,8 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 			case "w": col = c_white; break;
 			case "^": wave = true; break;
 			case "!": shake = true; break;
+			case "#": pulse = true; break;
+			case "@": rainbow = true; break;
 		}
 		letter = "";
 	}
@@ -91,7 +95,7 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 	{
 		letter = "";	
 	}
-	draw_text_colour(letx,lety,letter,col,col,col,col,1);
+	draw_text_colour(letx,lety,letter,col,col,col,col,a);
 	
 	if xx < lineend
 	{
@@ -113,10 +117,11 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 		xx = textx;
 	}
 	
-	//Text movement effects
+	//Text effects
 	
 	letx = xx;
 	lety = yy;
+	a = 1;
 	
 	if wave = true
 	{
@@ -127,6 +132,16 @@ for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
 	{
 		lety += random_range(-shakestrength, shakestrength);
 		letx += random_range(-shakestrength, shakestrength);
+	}
+	
+	if pulse = true
+	{
+		a -= alpha;
+	}
+	
+	if rainbow = true
+	{
+		col = make_colour_hsv(r_hue,255,255);
 	}
 	}
 }

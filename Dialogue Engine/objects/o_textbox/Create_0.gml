@@ -8,6 +8,8 @@ charcount = 0;
 pagechar = 0;
 avatar = 0;
 waveang = 0;
+alpha = 0;
+r_hue = 0;
 
 #endregion
 
