@@ -17,8 +17,6 @@ else
 
 pagechar = string_length(pagefinal);
 
-var textfinal = string_copy(pagefinal, 1, charcount);
-
 #region Draw Box
 
 // Left side
@@ -48,8 +46,104 @@ var textx = 0 + xoffset + sprite_get_width(sidesprite) + textxoffset + sprite_ge
 var texty = camheight - yoffset - sprite_get_height(sidesprite) + textyoffset;
 var textend = midwidth - xoffset - sprite_get_width(sidesprite) - textxoffset - sprite_get_width(avatarfinal);
 
-draw_set_color(c_white);
 draw_set_font(font);
-draw_text_ext(textx, texty, textfinal, textspace, textend);
+col = defaultcol;
+
+var xx = textx, yy = texty, letter = "", lineend = textend + textx, nextletter, lastletter, letx = xx, lety = yy, a = 1;
+var wave = false, shake = false, pulse = false, rainbow = false;
+
+for(var currentchar = 1; currentchar < (charcount + 1); currentchar += 1;)
+{
+	letter = string_copy(pagefinal,currentchar,1);
+	nextletter = string_copy(pagefinal,currentchar + 1,1);
+	lastletter = string_copy(pagefinal,currentchar - 1,1);
+	
+	if letter = "`"
+	{
+		switch (nextletter)
+		{
+			case "*": 
+			{
+				col = defaultcol;
+				letx = xx;
+				lety = yy;
+				wave = false;
+				shake = false;
+				pulse = false;
+				rainbow = false;
+			} break;
+			case "a": col = c_aqua; break;
+			case "r": col = c_red; break;
+			case "f": col = c_fuchsia; break;
+			case "o": col = c_orange; break;
+			case "y": col = c_yellow; break;
+			case "g": col = c_gray; break;
+			case "l": col = c_lime; break;
+			case "p": col = c_purple; break;
+			case "b": col = c_black; break;
+			case "w": col = c_white; break;
+			case "^": wave = true; break;
+			case "!": shake = true; break;
+			case "#": pulse = true; break;
+			case "@": rainbow = true; break;
+		}
+		letter = "";
+	}
+	else
+	{
+		if lastletter = "`"
+	{
+		letter = "";	
+	}
+	draw_text_colour(letx,lety,letter,col,col,col,col,a);
+	
+	if xx < lineend
+	{
+		xx += string_width(letter);
+	}
+	else
+	{
+		yy += textspace;
+		xx = textx;
+	}
+	
+	var charstoend = string_length(pagefinal) - currentchar,nxtspc = string_pos(" ", string_copy(pagefinal,currentchar + 1,charstoend));
+	
+	//Check if word too long
+	
+	if (xx + string_width(string_copy(pagefinal,currentchar,nxtspc))) > lineend
+	{
+		yy += textspace;
+		xx = textx;
+	}
+	
+	//Text effects
+	
+	letx = xx;
+	lety = yy;
+	a = 1;
+	
+	if wave = true
+	{
+		lety += (sin((waveang - (currentchar * 30)) * pi/180) * wavestrength);
+	}
+	
+	if shake = true
+	{
+		lety += random_range(-shakestrength, shakestrength);
+		letx += random_range(-shakestrength, shakestrength);
+	}
+	
+	if pulse = true
+	{
+		a -= alpha;
+	}
+	
+	if rainbow = true
+	{
+		col = make_colour_hsv(r_hue,255,255);
+	}
+	}
+}
 
 #endregion
